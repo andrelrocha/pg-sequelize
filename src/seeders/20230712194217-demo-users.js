@@ -1,0 +1,31 @@
+'use strict';
+
+/** @type {import('sequelize-cli').Migration} */
+module.exports = {
+  async up (queryInterface, Sequelize) {
+    await queryInterface.bulkInsert('users', [
+      {
+        name: "John Doe",
+        email: "johndoe@example.com",
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: "Jane Smith",
+        email: "janesmith@example.com",
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: "Bob Johnson",
+        email: "bobjohnson@example.com",
+        createdAt: new Date(),
+        updatedAt: new Date()
+      }
+    ], {});
+  },
+
+  async down (queryInterface, Sequelize) {
+    await queryInterface.bulkDelete('users', null, {});
+  }
+};
