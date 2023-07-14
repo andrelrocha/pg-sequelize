@@ -10,7 +10,7 @@ class CreateUserController {
             const { name, email } = request.body;
             const createUserUseCase = new CreateUserUseCase();
             const user = await createUserUseCase.execute({ name, email });
-            return response.status(201).json(user);
+            return response.status(201).send({ message: "User created successfully", user });
         } catch (error) {
             return next(error) as unknown as Response<unknown, Record<string, unknown>>;
         }

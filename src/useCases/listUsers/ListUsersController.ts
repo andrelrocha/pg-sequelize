@@ -20,9 +20,9 @@ class ListUsersController {
         
             const users = await this.listUsers.execute(limit, page, order);
             
-            return res.status(200).json(users);
+            return res.status(200).send(users);
         } catch (err) {
-            return res.status(500).json({ error: "Internal server error while loading user's database" });
+            return res.status(500).send({ error: "Internal server error while loading user's database" });
         }
     }
 }
