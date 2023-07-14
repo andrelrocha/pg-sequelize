@@ -8,9 +8,11 @@ class UpdateUserController {
 
     async handle(req: Request, res: Response, next: NextFunction): Promise<Response> {
         try {
+            const { id } = req.params;
+
             const { email, name } = req.body;
 
-            await this.updateUser.execute(email, name);
+            await this.updateUser.execute(email, name, id);
 
             return res.status(200).send({ message: "User updated successfully" });
         } catch (error) {
