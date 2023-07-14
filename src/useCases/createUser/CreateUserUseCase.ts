@@ -9,13 +9,13 @@ class CreateUserUseCase {
     
     async execute({ name, email }:IUserRequest ) {
         try {
-            const userAlreadyExists = await models.User.findOne({ where: { email } });
+            const userAlreadyExists = await models.users.findOne({ where: { email } });
 
             if (userAlreadyExists) {
                 throw new Error("User already exists in our database.");
             } 
 
-            const user = await models.User.create({ name, email });
+            const user = await models.users.create({ name, email });
             return user;
         } catch (error) {
             console.error(error);
